@@ -78,6 +78,10 @@ public class PantallaCocina implements Pantalla {
 	/** PANEL JUEGO **/
 	PanelJuego panelJuego;
 	
+	/** FUENTE **/
+	final Font fuente = new Font("Arial", Font.BOLD, 30);
+
+	
 	/**
 	 * Constructo que inicia la pantalla con un panel de juego
 	 * @param panel
@@ -86,9 +90,7 @@ public class PantallaCocina implements Pantalla {
 		inicializarPantalla(panel);
 	}
 
-	/** FUENTE **/
-	final Font fuente = new Font("Arial", Font.BOLD, 30);
-
+	
 	/**
 	 * Metodo que inicializa la pantalla con los componentes
 	 */

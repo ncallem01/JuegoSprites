@@ -6,6 +6,10 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import Principal.PanelJuego;
 import Principal.Sprite;
@@ -14,7 +18,7 @@ public class PantallaInicio implements Pantalla {
 
 	/**PINICIAL COLOR **/
 	Color colorLetraInicio = Color.WHITE;
-	final Font fuenteInicio = new Font("", Font.BOLD, 30);
+	final Font fuenteInicio = new Font("", Font.BOLD, 20);
 
 	PanelJuego panelJuego;
 	
@@ -22,7 +26,12 @@ public class PantallaInicio implements Pantalla {
 	// MUNECO
 	Sprite caraMuneco;
 	Image imagenCaraMuneco;
-	private static final int ANCHO_CARA = 100;
+	private static final int ANCHO_CARA = 200;
+
+	/** FONDO **/
+	private BufferedImage fondoInicio;
+	private Image fondoEscaladoInicio;
+	
 
 	/**
 	 * Constructo que inicia la pantalla con un panel de juego
@@ -40,6 +49,30 @@ public class PantallaInicio implements Pantalla {
 	public void inicializarPantalla(PanelJuego panel) {
 		this.panelJuego = panel;
 		
+		try {
+			// Imagen de fondo
+			fondoInicio = ImageIO.read(new File("src/Imagenes/fondoInicio.jpg"));
+			
+			// Imagen del muneco
+			imagenCaraMuneco = ImageIO.read(new File("src/Imagenes/caraMuneco.png"));
+			
+		
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			System.out.println("PROBLEMAS AL CARGAR LAS IMÃ?GENES. FIN DEL PROGRAMA");
+			System.exit(1);
+		}
+
+		// FONDO ESCALADO
+		fondoEscaladoInicio = fondoInicio.getScaledInstance(1000, 800,
+				BufferedImage.SCALE_SMOOTH);
+
+		// CREAR MUNECO
+		caraMuneco = new Sprite(((1000 / 2) - (ANCHO_CARA / 2)),
+				((800 / 2) - (ANCHO_CARA / 2)), ANCHO_CARA, ANCHO_CARA, 0, 0, imagenCaraMuneco,
+				true);
+		
 	}
 	
 
@@ -48,11 +81,14 @@ public class PantallaInicio implements Pantalla {
 	 */
 	@Override
 	public void pintarPantalla(Graphics g) {
-		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, panelJuego.getWidth(), panelJuego.getHeight());
+		
+		rellenarFondo(g);
+
+		caraMuneco.pintarEnMundo(g);
+		
 		g.setFont(fuenteInicio);
 		g.setColor(colorLetraInicio);
-		g.drawString("Comienza el juego", panelJuego.getWidth()/2-120,  panelJuego.getHeight()/2-10);
+		g.drawString("HAZ CLICK PARA INICIAR EL JUEGO", panelJuego.getWidth()/2-150,  panelJuego.getHeight()/2+220);
 		
 	}
 
@@ -62,9 +98,9 @@ public class PantallaInicio implements Pantalla {
 	@Override
 	public void ejecutarFrame() {
 		try {
-			Thread.sleep(100);
+			Thread.sleep(110);
 		} catch (InterruptedException e) {e.printStackTrace();}
-		colorLetraInicio = Color.WHITE; //colorLetraInicio == Color.WHITE ? Color.ORANGE : Color.WHITE;
+		colorLetraInicio = colorLetraInicio == Color.WHITE ? Color.RED : Color.WHITE;
 		
 	}
 
@@ -92,8 +128,16 @@ public class PantallaInicio implements Pantalla {
 	 */
 	@Override
 	public void redimensionarPantalla() {
-		// TODO Auto-generated method stub
-		
+		fondoEscaladoInicio = fondoInicio.getScaledInstance(panelJuego.getWidth(), panelJuego.getHeight(),
+				BufferedImage.SCALE_SMOOTH);
+	}
+	
+	/**
+	 * Metodo que pinta de fondo la imagen escalada
+	 * @param g
+	 */
+	private void rellenarFondo(Graphics g) {
+		g.drawImage(fondoEscaladoInicio, 0, 0, null);
 	}
 
 }
