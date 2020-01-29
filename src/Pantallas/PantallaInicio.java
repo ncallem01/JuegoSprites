@@ -3,10 +3,12 @@ package Pantallas;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
 import Principal.PanelJuego;
+import Principal.Sprite;
 
 public class PantallaInicio implements Pantalla {
 
@@ -16,11 +18,24 @@ public class PantallaInicio implements Pantalla {
 
 	PanelJuego panelJuego;
 	
+	/** SPRITES **/
+	// MUNECO
+	Sprite caraMuneco;
+	Image imagenCaraMuneco;
+	private static final int ANCHO_CARA = 100;
 
+	/**
+	 * Constructo que inicia la pantalla con un panel de juego
+	 * @param panel
+	 */
 	public PantallaInicio(PanelJuego panel) {
 		inicializarPantalla(panel);
 	}
 	
+	
+	/**
+	 * Metodo que inicializa la pantalla con los componentes
+	 */
 	@Override
 	public void inicializarPantalla(PanelJuego panel) {
 		this.panelJuego = panel;
@@ -28,6 +43,9 @@ public class PantallaInicio implements Pantalla {
 	}
 	
 
+	/**
+	 * Metodo que pinta por pantalla los componentes
+	 */
 	@Override
 	public void pintarPantalla(Graphics g) {
 		g.setColor(Color.BLACK);
@@ -38,6 +56,9 @@ public class PantallaInicio implements Pantalla {
 		
 	}
 
+	/**
+	 * Ejecuto los frames
+	 */
 	@Override
 	public void ejecutarFrame() {
 		try {
@@ -47,6 +68,9 @@ public class PantallaInicio implements Pantalla {
 		
 	}
 
+	/**
+	 * Metodo que realiza una accion al pulsar el raton sobre un elemento
+	 */
 	@Override
 	public void pulsarRaton(MouseEvent e) {
 		//pantallaActual = P_JUGANDO;
@@ -54,12 +78,18 @@ public class PantallaInicio implements Pantalla {
 		
 	}
 
+	/**
+	 * Metodo que realiza una accion al mover el raton
+	 */
 	@Override
 	public void moverRaton(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * Metodo que al redimensionar la pantalla se escala la imagen de fondo
+	 */
 	@Override
 	public void redimensionarPantalla() {
 		// TODO Auto-generated method stub

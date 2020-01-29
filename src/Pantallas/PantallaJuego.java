@@ -50,15 +50,24 @@ public class PantallaJuego implements Pantalla {
 	PanelJuego panelJuego;
 
 	
-	public PantallaJuego(PanelJuego panel) {
-		inicializarPantalla(panel);
-	}
 
 	/** FUENTE **/
 	final Font fuente = new Font("Arial", Font.BOLD, 30);
 
 	int numero;
 
+	
+	/**
+	 * Constructo que inicia la pantalla con un panel de juego
+	 * @param panel
+	 */
+	public PantallaJuego(PanelJuego panel) {
+		inicializarPantalla(panel);
+	}
+	
+	/**
+	 * Metodo que inicializa la pantalla con los componentes
+	 */
 	@Override
 	public void inicializarPantalla(PanelJuego panel) {
 		this.panelJuego = panel;
@@ -112,6 +121,10 @@ public class PantallaJuego implements Pantalla {
 		}
 	}
 
+	
+	/**
+	 * Metodo que pinta por pantalla los componentes
+	 */
 	@Override
 	public void pintarPantalla(Graphics g) {
 		rellenarFondo(g);
@@ -134,6 +147,11 @@ public class PantallaJuego implements Pantalla {
 		g.drawString("Puntuacion: " + panelJuego.getPuntuacion(),  panelJuego.getWidth()/2 + 50, panelJuego.getHeight()/2 - 300);
 	}
 
+	/**
+	 * Ejecuto los frames
+	 * Comprueba las colisiones
+	 * Muevo los Sprites
+	 */
 	@Override
 	public void ejecutarFrame() {
 		try {
@@ -147,7 +165,9 @@ public class PantallaJuego implements Pantalla {
 	}
 	
 	
-
+	/**
+	 * Metodo que realiza una accion al pulsar el raton sobre un elemento
+	 */
 	@Override
 	public void pulsarRaton(MouseEvent e) {
 
@@ -157,6 +177,9 @@ public class PantallaJuego implements Pantalla {
 
 	}
 
+	/**
+	 * Metodo que realiza una accion al mover el raton
+	 */
 	@Override
 	public void moverRaton(MouseEvent e) {
 		muneco.setPosX(e.getX()-muneco.getAncho()/2);
@@ -164,12 +187,19 @@ public class PantallaJuego implements Pantalla {
 
 	}
 
+	/**
+	 * Metodo que al redimensionar la pantalla se escala la imagen de fondo
+	 */
 	@Override
 	public void redimensionarPantalla() {
 		fondoEscaladoJuego = fondoJuego.getScaledInstance(panelJuego.getWidth(), panelJuego.getHeight(),
 				BufferedImage.SCALE_SMOOTH);
 	}
 
+	/**
+	 * Metodo que pinta de fondo la imagen escalada
+	 * @param g
+	 */
 	private void rellenarFondo(Graphics g) {
 		g.drawImage(fondoEscaladoJuego, 0, 0, null);
 	}
@@ -190,6 +220,9 @@ public class PantallaJuego implements Pantalla {
 		
 	}
 
+	/**
+	 * Metodo que comprueba las colisiones de un Sprite con otro
+	 */
 	private void comprobarColisiones() {
 
 		// Comprobamos colisión del disparo con asteroides:

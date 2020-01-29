@@ -18,6 +18,11 @@ import Principal.Sprite;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
 
+/**
+ * 
+ * @author Nadia Calle
+ *
+ */
 public class PantallaDucha implements Pantalla {
 
 	/** SPRITES **/
@@ -53,9 +58,6 @@ public class PantallaDucha implements Pantalla {
 	/** PANEL JUEGO **/
 	PanelJuego panelJuego;
 
-	public PantallaDucha(PanelJuego panel) {
-		inicializarPantalla(panel);
-	}
 
 	/** FUENTE **/
 	final Font fuente = new Font("Arial", Font.BOLD, 30);
@@ -65,6 +67,19 @@ public class PantallaDucha implements Pantalla {
 	
 	Player apl;
 
+	
+
+	/**
+	 * Constructo que inicia la pantalla con un panel de juego
+	 * @param panel
+	 */
+	public PantallaDucha(PanelJuego panel) {
+		inicializarPantalla(panel);
+	}
+	
+	/**
+	 * Metodo que inicializa la pantalla con los componentes
+	 */
 	@Override
 	public void inicializarPantalla(PanelJuego panel) {
 		this.panelJuego = panel;
@@ -106,6 +121,9 @@ public class PantallaDucha implements Pantalla {
 
 	}
 
+	/**
+	 * Metodo que pinta por pantalla los componentes
+	 */
 	@Override
 	public void pintarPantalla(Graphics g) {
 		rellenarFondo(g);
@@ -134,6 +152,10 @@ public class PantallaDucha implements Pantalla {
 		g.drawString("Puntuacion: " + panelJuego.getPuntuacion(), muneco.getPosX() + 200, muneco.getPosY() - 150);
 	}
 
+	/**
+	 * Ejecuto los frames
+	 * Comprueba las colisiones
+	 */
 	@Override
 	public void ejecutarFrame() {
 		try {
@@ -147,7 +169,9 @@ public class PantallaDucha implements Pantalla {
 	}
 	
 	
-
+	/**
+	 * Metodo que realiza una accion al pulsar el raton sobre un elemento
+	 */
 	@Override
 	public void pulsarRaton(MouseEvent e) {
 
@@ -169,6 +193,9 @@ public class PantallaDucha implements Pantalla {
 
 	}
 
+	/**
+	 * Metodo que realiza una accion al mover el raton
+	 */
 	@Override
 	public void moverRaton(MouseEvent e) {
 		if (spriteAux != null) {
@@ -182,16 +209,26 @@ public class PantallaDucha implements Pantalla {
 
 	}
 
+	/**
+	 * Metodo que al redimensionar la pantalla se escala la imagen de fondo
+	 */
 	@Override
 	public void redimensionarPantalla() {
 		fondoEscaladoDucha = fondoDucha.getScaledInstance(panelJuego.getWidth(), panelJuego.getHeight(),
 				BufferedImage.SCALE_SMOOTH);
 	}
 
+	/**
+	 * Metodo que pinta de fondo la imagen escalada
+	 * @param g
+	 */
 	private void rellenarFondo(Graphics g) {
 		g.drawImage(fondoEscaladoDucha, 0, 0, null);
 	}
 
+	/**
+	 * Metodo que comprueba las colisiones de un Sprite con otro
+	 */
 	private void comprobarColisiones() {
 
 		// Comprobamos colision de la comida con el muneco:

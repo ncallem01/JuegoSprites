@@ -22,7 +22,11 @@ import javax.swing.JPanel;
 import Pantallas.Pantalla;
 import Pantallas.PantallaInicio;
 
-
+/**
+ * 
+ * @author Nadia Calle
+ *
+ */
 public class PanelJuego extends JPanel implements Runnable{
 	
 	/** PANTALLAS **/
@@ -157,7 +161,10 @@ public class PanelJuego extends JPanel implements Runnable{
 	}
 	
 	public void restarPuntuacionJuego() {
-		puntuacion -= 5;
+		
+		if(puntuacion > 0) {
+			puntuacion -= 5;
+		}
 	}
 	
 	

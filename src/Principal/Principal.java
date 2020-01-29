@@ -3,7 +3,7 @@ import java.awt.EventQueue;
 
 /**
  * Principal para el juego.
- * @author jesusredondogarcia
+ * @author Nadia Calle
  *
  */
 public class Principal {

@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
  * Representa un objeto en movimiento.
  * Los sprites son colisionables.
  * Un Sprite se concibe como un BufferedImage con un ancho, alto y posición que tiene una velocidad y que se puede estambar en un {@link Graphics}
- * @author jesusredondogarcia
+ * @author Nadia Calle
  *
  */
 public class Sprite {

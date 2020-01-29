@@ -89,7 +89,9 @@ public class PantallaCocina implements Pantalla {
 	/** FUENTE **/
 	final Font fuente = new Font("Arial", Font.BOLD, 30);
 
-	
+	/**
+	 * Metodo que inicializa la pantalla con los componentes
+	 */
 	@Override
 	public void inicializarPantalla(PanelJuego panel) {
 		this.panelJuego = panel;
@@ -250,7 +252,7 @@ public class PantallaCocina implements Pantalla {
 	}
 
 	/**
-	 * Metodo que al 
+	 * Metodo que al redimensionar la pantalla se escala la imagen de fondo
 	 */
 	@Override
 	public void redimensionarPantalla() {
@@ -259,7 +261,7 @@ public class PantallaCocina implements Pantalla {
 	}
 
 	/**
-	 * Meto
+	 * Metodo que pinta de fondo la imagen escalada
 	 * @param g
 	 */
 	private void rellenarFondo(Graphics g) {
