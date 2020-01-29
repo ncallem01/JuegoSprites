@@ -125,13 +125,16 @@ public class PanelJuego extends JPanel implements Runnable{
 	 * Aumenta el contador de asteroides explotados
 	 */
 	public void aumentarNivel() {
-		if((nivel.equalsIgnoreCase("bebé")) && puntuacion > 149) {
+		if((nivel.equalsIgnoreCase("bebé")) && puntuacion > 99) {
+			setNivel("Nino");
+		}
+		if((nivel.equalsIgnoreCase("Nino")) && puntuacion > 149) {
 			setNivel("Adolescente");
 		}
-		if((nivel.equalsIgnoreCase("Adolescente")) && puntuacion > 499) {
+		if((nivel.equalsIgnoreCase("Adolescente")) && puntuacion > 299) {
 			setNivel("Adulto");
 		}
-		if((nivel.equalsIgnoreCase("Adulto")) && puntuacion > 799) {
+		if((nivel.equalsIgnoreCase("Adulto")) && puntuacion > 599) {
 			setNivel("Anciano");
 		}
 	}

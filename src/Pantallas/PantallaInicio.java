@@ -26,7 +26,7 @@ public class PantallaInicio implements Pantalla {
 	// MUNECO
 	Sprite caraMuneco;
 	Image imagenCaraMuneco;
-	private static final int ANCHO_CARA = 200;
+	private static final int ANCHO_CARA = 180;
 
 	/** FONDO **/
 	private BufferedImage fondoInicio;
